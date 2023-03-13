@@ -61,7 +61,7 @@ class SFooter:
         The icon URL of the footer.
     """
     text: str
-    icon_url: str
+    icon_url: str = None
 
 
 class SEmbed(discord.Embed):
