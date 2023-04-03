@@ -1,5 +1,5 @@
 import setuptools
-from sembed import __version__
+import re
 
 with open("README.md", "r", encoding='utf-8') as f:
     long_desc = f.read()
@@ -8,10 +8,13 @@ with open("README.md", "r", encoding='utf-8') as f:
 def _requires_from_file(filename):
     return open(filename, encoding="utf8").read().splitlines()
 
+version = ""
+with open("sembed/__init__.py") as f:
+    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
 
 setuptools.setup(
     name="sembed",
-    version=__version__,
+    version=version,
     author="sevenc_nanashi",
     description="A wrapper of discord.Embed.",
     long_description=long_desc,
